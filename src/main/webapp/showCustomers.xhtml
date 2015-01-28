@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+		xmlns:ui="http://java.sun.com/jsf/facelets"
+		xmlns:f="http://java.sun.com/jsf/core"
+		xmlns:h="http://java.sun.com/jsf/html"
+		template="/templates/default.xhtml">
+		
+		<ui:define name="center">
+		<center>
+			<h:form>
+				<h:dataTable value="#{customerBean.allCustomers}" var="item">
+					<f:facet name="header">#{msg.allCustomers}</f:facet>
+						<h:column>
+							<f:facet name="header">#{msg.customerFirstName}</f:facet>
+							<h:outputText value="#{item.name}" />
+						</h:column>
+						<h:column>
+							<f:facet name="header">#{msg.customerSurname}</f:facet>
+							<h:outputText value="#{item.surname}"/>
+						</h:column>
+						<h:column>
+							<f:facet name="header">#{msg.customerPhone}</f:facet>
+							<h:outputText value="#{item.phone}"/>
+						</h:column>
+						<h:column>
+							<f:facet name="header">#{msg.registrationDate}</f:facet>
+							<h:outputText value="#{item.registrationDate}"/>
+						</h:column>
+						<h:column>
+							<f:facet name="header">#{msg.action}</f:facet>
+							<h:commandLink value="#{msg.actionDelete}" 
+							action="#{customerBean.deleteCustomer}"/>
+						</h:column>
+
+				</h:dataTable>
+			</h:form>
+		</center>
+	</ui:define>
+</ui:composition>

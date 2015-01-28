@@ -1,29 +1,54 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
-   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:ui="http://java.sun.com/jsf/facelets">
+xmlns:h="http://java.sun.com/jsf/html"
+xmlns:ui="http://java.sun.com/jsf/facelets">
 <h:head>
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<title><ui:insert name="windowTitle">#{msg.mainWindowTitle}</ui:insert>
-	</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 </h:head>
 <h:body>
-  <h:outputStylesheet library="css" name="default.css" target="body" />
-	<div class="heading">
-	  <ui:insert name="heading">
-       #{msg.mainHeading}
-     </ui:insert>
-    </div>
-	<div class="menuAndContent">
-	 <div class="menu">
-	   <ui:insert name="menu">
-         <ui:include src="/views/main/menu.xhtml" />
-       </ui:insert>
-      </div>
-	  <div class="content">
-	     <ui:insert name="content" />
-       </div>
-	</div>
+<h:outputStylesheet library="css" name="default.css" target="body" />
+<div class="heading">
+
+</div>
+
+
+  <div id='mbtnavbar'>
+<ul id='mbtnav'>
+<li><a href="home.jsf">#{msg.home}</a>
+<li><a href='####'>#{msg.wines} &#9660;</a>
+        <ul>
+        <li><a href='showWines.jsf'>#{msg.all}</a></li>
+        <li><a href='add.jsf'>#{msg.add}</a></li>
+        <li><a href='####'>#{msg.type}&#9;&#9656;</a>
+                <ul>
+                <li><a href='redWines.jsf'>#{msg.red}</a></li>
+                <li><a href='####'>#{msg.white}</a></li>
+                <li><a href='####'>#{msg.rose}</a></li>
+                </ul>
+        </li>
+        </ul>
+</li>
+<li><a href='add_customer.jsf'>#{msg.customers} &#9660;</a>
+        <ul>
+            <li><a href='add_customer.jsf'>#{msg.add}</a></li>
+            <li><a href='showCustomers.jsf'>#{msg.all}</a></li>
+        </ul>
+        </li>
+<li><a href='####'>#{msg.transactions} &#9660;</a>
+        <ul>
+            <li><a href='####'>#{msg.done}</a></li>
+            <li><a href='####'>#{msg.todo}</a></li>
+        </ul>
+
+</li>
+</li>
+</ul>
+</div>
+<center>
+<div class="center">
+<ui:insert name="center"/>
+</div>
+</center>
 </h:body>
 </html>

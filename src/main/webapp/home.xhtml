@@ -1,10 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:h="http://java.sun.com/jsf/html"
-	template="/templates/default.xhtml">
-	<ui:define name="content">
-		<p>#{msg.applicationInfo}</p>
-	</ui:define>
+xmlns:ui="http://java.sun.com/jsf/facelets"
+xmlns:f="http://java.sun.com/jsf/core"
+xmlns:h="http://java.sun.com/jsf/html"
+template="/templates/default.xhtml">
+<ui:define name="center">
+<p>		<h:outputText value="#{msg.applicationInfo}" style="font-weight:bold"/></p>
+
+<div>
+
+
+The Red Wine Shop is a family owned and operated online retail store. As an online retailer, we aim to provide people with quality wines at a fair price. In order to ensure the quality of the wines we sell, all of our wine is stored in a climate controlled warehouse, set to 14 degrees, which is located in Abbotsford, Melbourne. As a family run business, we have always been and will continue to be dedicated to high quality customer service. We welcome any queries you may have and can contact us at sales@theredwineshop.com.
+<br/>
+<br/>
+Regards,
+<br/>
+The family at The Red Wine Shop.
+<br/>
+<br/>
+<br/>
+P.S. Happy Drinking!
+</div>
+</ui:define>
 </ui:composition>

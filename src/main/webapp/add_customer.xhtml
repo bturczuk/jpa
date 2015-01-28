@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+		xmlns:ui="http://java.sun.com/jsf/facelets"
+		xmlns:f="http://java.sun.com/jsf/core"
+		xmlns:h="http://java.sun.com/jsf/html"
+		xmlns:rich="http://richfaces.org/rich"
+		template="/templates/default.xhtml">
+		
+<ui:define name="center">
+<center>
+	<h:form id="customerForm">
+		<h:panelGrid columns="2">
+			<h:outputText value="#{msg.customerFirstName}" style="font-weight:bold"/>
+			<h:inputText id="name" value="#{customerBean.customer.name}"
+			required="#{true}"/>
+			
+			<h:outputText value="#{msg.customerSurname}" style="font-weight:bold"/>
+			<h:inputText id="surname" value="#{customerBean.customer.surname}"
+			required="#{true}"/>
+			
+			<h:outputText value="#{msg.customerPhone}" style="font-weight:bold"/>
+			<h:inputText id="phone" value="#{customerBean.customer.phone}"
+			required="#{true}"/>
+			
+			<h:outputText value="#{msg.registrationDate}" style="font-weight:bold"/>
+			<rich:calendar value="#{customerBean.customer.registrationDate}"
+			id="calendar" datePattern="yyyy-MM-dd" showApplyButton="#{true}"
+			style="width:200px">
+			</rich:calendar>	
+		</h:panelGrid>
+		
+		<h:commandButton value="#{msg.formOKButton}"
+		action="#{customerBean.addCustomer}" />
+		
+		<h:panelGrid>
+			<h:messages for="" />
+			<h:messages id="messages" showDetail="#{true}"
+			showSummary="#{false}"/>
+		</h:panelGrid>
+	</h:form>
+</center>
+</ui:define>
+</ui:composition>

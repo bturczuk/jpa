@@ -1,40 +1,80 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:h="http://java.sun.com/jsf/html"
-	template="/templates/default.xhtml"
-	xmlns:a4j="http://richfaces.org/a4j"
-	xmlns:rich="http://richfaces.org/rich">
-
-	<ui:define name="content">
-		<h:form id="personForm">
-			<h:panelGrid columns="2">
-
-				<h:outputText value="#{msg.personFirstNameLabel}" />
-				<h:inputText id="firstName" value="#{personBean.person.firstName}"
-					required="#{true}" />
-
-				<h:outputText value="#{msg.personPinLabel}" />
-				<h:inputText id="pin" value="#{personBean.person.pin}" />
-
-				<h:outputText value="Registration date" />
-				<rich:calendar value="#{personBean.person.registrationDate}"
-					id="calendar" datePattern="dd.MM.yyyy" showApplyButton="#{true}"
-					style="width:200px">
-				</rich:calendar>
-			</h:panelGrid>
-
-			<h:commandButton value="#{msg.personFormOKButton}"
-				action="#{personBean.addPerson}" />
-
-			<h:panelGrid>
-				<h:messages for="" />
-				<h:messages id="messages" showDetail="#{true}"
-					showSummary="#{false}" />
-			</h:panelGrid>
-
-		</h:form>
-
-	</ui:define>
+		xmlns:ui="http://java.sun.com/jsf/facelets"
+		xmlns:f="http://java.sun.com/jsf/core"
+		xmlns:h="http://java.sun.com/jsf/html"
+		template="/templates/default.xhtml">
+<ui:define name="center">
+<center>
+<h:form>
+	<h:panelGrid columns="2">
+		<h:outputText value="#{msg.origin}" style="font-weight:bold"/>
+			<h:selectOneRadio id="origin_" value="#{wineBean.wine.origin}">
+			<f:selectItem id="Italy" itemLabel="Italy" itemValue="Italy" />
+			<f:selectItem id="Spain" itemLabel="Spain" itemValue="Spain" />
+			<f:selectItem id="Chile" itemLabel="Chile" itemValue="Chile" />
+			<f:selectItem id="Usa" itemLabel="USA" itemValue="USA" />
+			<f:ajax execute="@this" render="messages beanState" />
+	</h:selectOneRadio>
+	</h:panelGrid>
+	<h:panelGrid columns="2">
+		<h:outputText value="#{msg.region}" style="font-weight:bold"/>
+	<h:selectOneRadio id="region_" value="#{wineBean.wine.region}">
+		<f:selectItem id="Sicilia" itemLabel="Sicilia" itemValue="Sicilia" />
+		<f:selectItem id="Valencia" itemLabel="Valencia" itemValue="Valencia" />
+		<f:selectItem id="Atacama" itemLabel="Atacama" itemValue="Atacama" />
+		<f:selectItem id="California" itemLabel="California" itemValue="California" />
+		<f:ajax event="change" execute="@this" render="messages beanState" />
+	</h:selectOneRadio>
+	</h:panelGrid>
+		<h:panelGrid columns="2">
+		<h:outputText value="#{msg.colour}" style="font-weight:bold"/>
+	<h:selectOneListbox id="type_" value="#{wineBean.wine.colour.nameOfColour}">
+		<f:selectItem id="red" itemLabel="Red" itemValue="Red" />
+		<f:selectItem id="white" itemLabel="White" itemValue="White" />
+		<f:selectItem id="rose" itemLabel="Rose" itemValue="Rose" />
+		<f:ajax event="change" execute="@this" render="messages beanState" />
+	</h:selectOneListbox>
+	</h:panelGrid>
+	<h:panelGrid columns="2">
+		<h:outputText value="#{msg.strains}" style="font-weight:bold"/>
+		<h:selectManyCheckbox id="strains" value="#{wineBean.wine.strains}"
+			layout="pageDirection">
+			<f:selectItem id="rioja" itemLabel="Rioja" itemValue="Rioja" />
+			<f:selectItem id="carmenere" itemLabel="Carmenere" itemValue="Carmenere" />
+			<f:selectItem id="savblanc" itemLabel="Sauvignion Blanc" itemValue="Sauvignon Blanc" />
+			<f:selectItem id="primitivo" itemLabel="Primitivo" itemValue="Primitivo" />
+			<f:selectItem id="pinotgrigio" itemLabel="Pinot Grigio" itemValue="Pinot Grigio" />
+			<f:ajax execute="@this" render="messages beanState" />
+	</h:selectManyCheckbox>
+	</h:panelGrid>
+	<h:panelGrid columns="2">
+		<h:outputText value="#{msg.name}" style="font-weight:bold"/>
+		<h:inputText id="name_" value="#{wineBean.wine.name}" required="#{true}" >
+		<f:ajax execute="@this" render="messages beanState" />
+		</h:inputText>
+	</h:panelGrid>
+<h:panelGrid columns="2" >
+<h:commandButton value="#{msg.formOKButton}"
+action="#{wineBean.addWine}" />
+</h:panelGrid>
+<h:panelGrid>
+<h:messages id="messages" showDetail="#{true}"
+showSummary="#{false}" />
+</h:panelGrid>
+<h:panelGrid id="beanState" columns="2">
+<h:outputText value="#{msg.origin}" />
+<h:outputText id="originOut" value="#{wineBean.wine.origin}" />
+<h:outputText value="#{msg.region}" />
+<h:outputText id="regionOut" value="#{wineBean.wine.region}" />
+<h:outputText value="#{msg.strains}" />
+<h:outputText id="strainsOut" value="#{wineBean.wine.strains}" />
+<h:outputText value="#{msg.name}" />
+<h:outputText id="nameOut" value="#{wineBean.wine.name}" />
+<h:outputText value="#{msg.colour}" />
+<h:outputText id="colourOut" value="#{wineBean.wine.colour.nameOfColour}" />
+</h:panelGrid>
+</h:form>
+</center>
+</ui:define>
 </ui:composition>
